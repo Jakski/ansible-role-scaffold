@@ -1,0 +1,27 @@
+ansible-role-scaffold
+================================================================================
+
+Ansible role to scaffold new role project.
+
+Variables
+--------------------------------------------------------------------------------
+
+.. autoyaml:: defaults/main.yml
+
+Examples
+--------------------------------------------------------------------------------
+
+.. literalinclude:: molecule/default/playbook.yml
+   :language: yaml
+
+Documentation
+--------------------------------------------------------------------------------
+
+Compile::
+
+   $ pip3 install -r requirements.txt
+   $ make man
+
+View::
+
+   $ man ./docs/man/ansible-role-scaffold.1

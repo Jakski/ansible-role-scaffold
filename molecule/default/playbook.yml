@@ -1,0 +1,10 @@
+---
+- hosts: instance
+  tasks:
+    - import_role:
+        name: scaffold
+      vars:
+        scaffold_destination: "{{ ansible_facts.user_dir }}/example"
+        scaffold_name: example
+        scaffold_author: John Doe
+        scaffold_description: Some Ansible role

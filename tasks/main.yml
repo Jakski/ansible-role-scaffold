@@ -1,0 +1,85 @@
+---
+- name: Prepare directory layout
+  file:
+    path: "{{ scaffold_destination|mandatory }}/{{ item }}"
+    state: directory
+  loop:
+    - ''
+    - molecule
+    - molecule/default
+    - molecule/default/roles
+    - molecule/default/tests
+    - tasks
+    - defaults
+    - meta
+
+- name: Create CHANGELOG
+  template:
+    src: changelog.j2
+    dest: "{{ scaffold_destination }}/CHANGELOG"
+
+- name: Create license file
+  template:
+    src: license.j2
+    dest: "{{ scaffold_destination }}/LICENSE"
+
+- name: Create Makefile
+  template:
+    src: makefile.j2
+    dest: "{{ scaffold_destination }}/Makefile"
+
+- name: Create requirements file
+  copy:
+    src: requirements.txt
+    dest: "{{ scaffold_destination }}/requirements.txt"
+
+- name: Create .gitignore
+  copy:
+    src: gitignore
+    dest: "{{ scaffold_destination }}/.gitignore"
+
+- name: Create tasks file
+  copy:
+    src: tasks.yml
+    dest: "{{ scaffold_destination }}/tasks/main.yml"
+
+- name: Create defaults file
+  template:
+    src: defaults.yml.j2
+    dest: "{{ scaffold_destination }}/defaults/main.yml"
+
+- name: Create Sphinx entrypoint
+  template:
+    src: docs.rst.j2
+    dest: "{{ scaffold_destination }}/docs.rst"
+
+- name: Create Sphinx configuration
+  template:
+    src: conf.py.j2
+    dest: "{{ scaffold_destination }}/conf.py"
+
+- name: Link role in Molecule scenario
+  file:
+    state: link
+    path: "{{ scaffold_destination }}/molecule/default/roles/{{ scaffold_name|mandatory }}"
+    src: ../../../
+
+- name: Create Molecule Docker playbook
+  copy:
+    src: docker-create.yml
+    dest: "{{ scaffold_destination }}/molecule/docker-create.yml"
+
+- name: Create Molecule configuration
+  copy:
+    src: molecule.yml
+    dest: "{{ scaffold_destination }}/molecule/default/molecule.yml"
+
+- name: Create Molecule playbook
+  template:
+    src: playbook.yml.j2
+    dest: "{{ scaffold_destination }}/molecule/default/playbook.yml"
+
+- name: Create Molecule verifier script
+  copy:
+    src: test_default.py
+    dest: "{{ scaffold_destination }}/molecule/default/tests/test_default.py"

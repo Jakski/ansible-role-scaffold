@@ -1,0 +1,19 @@
+### scaffold_name
+#   Role's name.
+#
+#   Default: undefined
+
+### scaffold_author
+#   Role's author.
+#
+#   Default: undefined
+
+### scaffold_destination
+#   Role's destination directory.
+#
+#   Default: undefined
+
+### scaffold_description
+#   Role's short description.
+#
+#   Default: undefined
