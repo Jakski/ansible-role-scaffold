@@ -38,6 +38,11 @@
     src: gitignore
     dest: "{{ scaffold_destination }}/.gitignore"
 
+- name: Create meta file
+  template:
+    src: meta.yml.j2
+    dest: "{{ scaffold_destination }}/meta/main.yml"
+
 - name: Create tasks file
   copy:
     src: tasks.yml
