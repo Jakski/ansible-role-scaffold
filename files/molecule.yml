@@ -14,8 +14,7 @@ platforms:
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
+    privileged: true
     tty: true
 provisioner:
   name: ansible
