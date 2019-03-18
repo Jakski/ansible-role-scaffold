@@ -1,3 +1,2 @@
 Sphinx
 sphinxcontrib-autoyaml
-sphinxcontrib-lookup-yaml
