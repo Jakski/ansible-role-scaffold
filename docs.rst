@@ -6,7 +6,25 @@ Ansible role to scaffold new role project.
 Variables
 --------------------------------------------------------------------------------
 
-.. autoyaml:: defaults/main.yml
+scaffold_name
+
+   Role's name
+
+scaffold_author
+
+   Role's author
+
+scaffold_destination
+
+   Role's destination directory
+
+scaffold_description
+
+   Role's short description
+
+scaffold_platforms
+
+   Platforms supported by role
 
 Examples
 --------------------------------------------------------------------------------

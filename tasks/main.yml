@@ -1,7 +1,7 @@
 ---
 - name: Prepare directory layout
   file:
-    path: "{{ scaffold_destination|mandatory }}/{{ item }}"
+    path: "{{ scaffold_destination }}/{{ item }}"
     state: directory
   loop:
     - ''
@@ -66,7 +66,7 @@
 - name: Link role in Molecule scenario
   file:
     state: link
-    path: "{{ scaffold_destination }}/molecule/default/roles/{{ scaffold_name|mandatory }}"
+    path: "{{ scaffold_destination }}/molecule/default/roles/{{ scaffold_name }}"
     src: ../../../
 
 - name: Create Molecule Docker playbook

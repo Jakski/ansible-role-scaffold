@@ -1,7 +1,16 @@
 ---
 galaxy_info:
-  author: "{{ scaffold_author|mandatory }}"
+  description: "{{ scaffold_description }}"
+  author: "{{ scaffold_author }}"
   license: MIT
   min_ansible_version: {{ ansible_version.major }}.{{ ansible_version.minor }}
+  platforms:
+{% for platform in scaffold_platforms %}
+    - name: {{ platform.name }}
+      versions:
+{% for version in platform.versions | default(["all"]) %}
+        - {{ version }}
+{% endfor %}
+{% endfor %}
 
 dependencies: []
