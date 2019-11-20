@@ -9,18 +9,23 @@ verifier:
   enabled: false
 platforms:
   - name: ${MOLECULE_INSTANCE_NAME:-instance}
-    image: jakski/systemd:debian-9
+    image: jakski/systemd:debian-10
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
       - SYS_ADMIN
     tty: true
+dependency:
+  name: shell
+  command: molecule/link-mitogen.sh
 provisioner:
   name: ansible
   config_options:
     defaults:
       stdout_callback: yaml
+      strategy_plugins: ${MOLECULE_SCENARIO_DIRECTORY}/plugins/strategy
+      strategy: mitogen_linear
   playbooks:
     docker:
       create: ../docker-create.yml

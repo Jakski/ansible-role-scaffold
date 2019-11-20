@@ -1,10 +1,14 @@
 ---
-- hosts: instance
+- hosts: localhost
   tasks:
     - import_role:
         name: scaffold
       vars:
-        scaffold_destination: "{{ ansible_facts.user_dir }}/example"
-        scaffold_name: example
-        scaffold_author: John Doe
-        scaffold_description: Some Ansible role
+        scaffold_destination: "{{ ansible_facts.user_dir }}/dev/ansible-role-icingaweb2"
+        scaffold_name: icingaweb2
+        scaffold_author: Jakub Pieńkowski
+        scaffold_description: Role to setup Icingaweb2
+        scaffold_platforms:
+          - name: Debian
+            versions:
+              - 10

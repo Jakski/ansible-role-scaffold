@@ -18,6 +18,11 @@
     src: changelog.j2
     dest: "{{ scaffold_destination }}/CHANGELOG"
 
+- name: Create Mitogen link script
+  copy:
+    src: link-mitogen.sh
+    dest: "{{ scaffold_destination }}/molecule/link-mitogen.sh"
+
 - name: Create license file
   template:
     src: license.j2
