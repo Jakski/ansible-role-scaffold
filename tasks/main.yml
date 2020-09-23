@@ -22,6 +22,7 @@
   copy:
     src: link-mitogen.sh
     dest: "{{ scaffold_destination }}/molecule/link-mitogen.sh"
+    mode: 0755
 
 - name: Create license file
   template:
@@ -73,11 +74,6 @@
     state: link
     path: "{{ scaffold_destination }}/molecule/default/roles/{{ scaffold_name }}"
     src: ../../../
-
-- name: Create Molecule Docker playbook
-  copy:
-    src: docker-create.yml
-    dest: "{{ scaffold_destination }}/molecule/docker-create.yml"
 
 - name: Create Molecule configuration
   copy:
