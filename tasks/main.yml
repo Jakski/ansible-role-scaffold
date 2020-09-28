@@ -34,10 +34,10 @@
     src: makefile.j2
     dest: "{{ scaffold_destination }}/Makefile"
 
-- name: Create requirements file
+- name: Create requirements-dev.txt file
   copy:
-    src: requirements.txt
-    dest: "{{ scaffold_destination }}/requirements.txt"
+    src: requirements-dev.txt
+    dest: "{{ scaffold_destination }}/requirements-dev.txt"
 
 - name: Create .gitignore
   copy:
